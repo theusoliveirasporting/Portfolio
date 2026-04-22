@@ -579,8 +579,7 @@ function initParticles() {
     animationId = requestAnimationFrame(animate);
 
     let targetFPS = 60;
-    if (isScrolling) targetFPS = 30; // Prioritize scroll smoothness
-    if (isIdle) targetFPS = 15;      // Energy saving
+    if (isIdle) targetFPS = 30; // Poupar energia apenas quando parado
 
     const frameInterval = 1000 / targetFPS;
     const deltaTime = time - lastDrawTime;
@@ -805,7 +804,14 @@ function initContactForm() {
 // SMOOTH SCROLL SYSTEM (LENIS)
 // ==========================================
 function initSmoothScrollSystem() {
-  if (typeof Lenis === 'undefined') return;
+  // Detetar se é um dispositivo tátil
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  
+  // No telemóvel, o scroll nativo é muito superior ao simulado
+  if (isTouch) {
+    console.log("Lenis: Mobile/Touch detected. Using native inertia scroll for better performance.");
+    return;
+  }
 
   const lenis = new Lenis({
     duration: 1.2,
@@ -814,7 +820,7 @@ function initSmoothScrollSystem() {
     gestureDirection: 'vertical',
     smooth: true,
     mouseMultiplier: 1,
-    smoothTouch: false,
+    smoothTouch: false, // Garante que não tenta suavizar o toque se inicializado
     touchMultiplier: 2,
     infinite: false,
   });
