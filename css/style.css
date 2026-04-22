@@ -447,6 +447,8 @@ body::before {
   position: relative;
   z-index: 10;
   padding: clamp(2rem, 6vw, 6rem) 0; /* Tighter on mobile */
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
 }
 
 .section:first-of-type {
@@ -734,12 +736,11 @@ body::before {
 }
 
 .about-card {
-  background: var(--bg-surface);
+  background: var(--bg-surface-strong);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--r-xl);
   padding: 1.5rem;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  /* backdrop-filter removido por performance em grelhas grandes */
   transition: transform var(--t-base) var(--ease-magnetic), box-shadow var(--t-base) var(--ease-magnetic), background var(--t-base) var(--ease);
   display: flex;
   flex-direction: column; /* Vertical stack on mobile */
@@ -813,12 +814,11 @@ body::before {
 }
 
 .service-card {
-  background: var(--bg-surface);
+  background: var(--bg-surface-strong);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--r-xl);
   overflow: hidden;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  /* backdrop-filter removido para fluidez no scroll */
   transition: transform var(--t-base) var(--ease-magnetic), box-shadow var(--t-base) var(--ease-magnetic);
   box-shadow: 0 4px 24px rgba(0,0,0,0.6), inset 1px 1px 1px rgba(255,255,255,0.08);
 }
@@ -1069,15 +1069,14 @@ body::before {
 }
 
 .project-card {
-  background: var(--bg-surface);
+  background: var(--bg-surface-strong);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--r-xl);
   overflow: hidden;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  /* backdrop-filter removido para evitar jank no scroll mobile */
   transition: transform var(--t-base) var(--ease-magnetic), box-shadow var(--t-base) var(--ease-magnetic);
   box-shadow: 0 4px 24px rgba(0,0,0,0.6), inset 1px 1px 1px rgba(255,255,255,0.08);
-  /* Remover will-change permanente para poupar GPU, ativado apenas no transform real via hover */
+  will-change: transform;
 }
 
 .project-card__title,
@@ -1152,6 +1151,7 @@ body::before {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  aspect-ratio: 3 / 2;
   transition: transform var(--t-slow) var(--ease);
 }
 

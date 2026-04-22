@@ -433,8 +433,7 @@ function initMobileMenu() {
   // Close menu when clicking a link
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-      menuBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+      toggleMenu(true); // Usa a função centralizada para garantir que todos os estados (backdrop, aria) são atualizados
     });
   });
 }
@@ -488,8 +487,8 @@ function initParticles() {
 
   let particles = [];
   let isMobile = window.innerWidth < 768;
-  let particleCount = isMobile ? 40 : 80; // Reduzido para menos poluição visual
-  const connectionDist = 140; // Menor alcance de conexão
+  let particleCount = isMobile ? 25 : 70; 
+  const connectionDist = isMobile ? 0 : 120; // Desativa conexões em mobile
   
   let w = canvas.width = window.innerWidth;
   let h = canvas.height = window.innerHeight;
@@ -584,7 +583,7 @@ function initParticles() {
     const frameInterval = 1000 / targetFPS;
     const deltaTime = time - lastDrawTime;
 
-    if (deltaTime < frameInterval) return;
+    if (deltaTime < frameInterval || document.hidden) return;
     lastDrawTime = time - (deltaTime % frameInterval);
 
     ctx.clearRect(0, 0, w, h);
@@ -595,26 +594,27 @@ function initParticles() {
       p.draw();
     }
 
-    // 2. Draw connections (separate path)
-    ctx.beginPath();
-    ctx.strokeStyle = 'rgba(0, 191, 166, 0.12)'; 
-    ctx.lineWidth = 0.8;
-    
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const p1 = particles[i];
-        const p2 = particles[j];
-        const dx = p1.x - p2.x;
-        const dy = p1.y - p2.y;
-        const distSq = dx * dx + dy * dy;
+    if (!isMobile) {
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(0, 191, 166, 0.12)'; 
+      ctx.lineWidth = 0.8;
+      
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const p1 = particles[i];
+          const p2 = particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const distSq = dx * dx + dy * dy;
 
-        if (distSq < connectionDist * connectionDist) {
-          ctx.moveTo(Math.floor(p1.x), Math.floor(p1.y));
-          ctx.lineTo(Math.floor(p2.x), Math.floor(p2.y));
+          if (distSq < connectionDist * connectionDist) {
+            ctx.moveTo(Math.floor(p1.x), Math.floor(p1.y));
+            ctx.lineTo(Math.floor(p2.x), Math.floor(p2.y));
+          }
         }
       }
+      ctx.stroke();
     }
-    ctx.stroke();
   }
 
   console.log("Particle Engine: Initialized with IntersectionObserver.");
@@ -677,6 +677,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScrollSystem();
 
 
+  // Update copyright year
+  const yearEl = document.querySelector('.footer__copy');
+  if (yearEl) {
+    const currentYear = new Date().getFullYear();
+    yearEl.innerHTML = yearEl.innerHTML.replace('2025', currentYear).replace('2026', currentYear);
+  }
+
   // Initial reveal for elements already in viewport
   setTimeout(() => {
     document.querySelectorAll('.reveal').forEach(el => {
@@ -737,6 +744,7 @@ function handleImageError(img) {
   } else if (img.classList.contains('project-card__img') || img.classList.contains('gallery__img')) {
     // Elegant placeholder for project images
     img.src = 'https://placehold.co/600x400/0a0a0a/00BFA6?text=Projeto+Digital';
+    img.alt = 'Imagem indisponível';
     img.style.filter = 'grayscale(0.5)';
   }
 }
@@ -765,9 +773,10 @@ function initContactForm() {
 
     if (hasError) return;
 
-    // Loading state
+    // Loading state from translations
+    const t = window.translations[currentLanguage];
     const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Enviando...';
+    submitBtn.textContent = t.form.loading || '...';
     submitBtn.style.opacity = '0.7';
     submitBtn.style.pointerEvents = 'none';
 
@@ -779,15 +788,15 @@ function initContactForm() {
       });
       
       if (response.ok) {
-        submitBtn.textContent = 'Mensagem Enviada! ✓';
+        submitBtn.textContent = t.form.success || '✓';
         submitBtn.style.backgroundColor = 'var(--accent)';
         form.reset();
       } else {
-        submitBtn.textContent = 'Erro ao enviar. Tente novamente.';
+        submitBtn.textContent = t.form.error || 'Error';
         submitBtn.style.backgroundColor = '#ef4444';
       }
     } catch (error) {
-      submitBtn.textContent = 'Erro ao enviar. Tente novamente.';
+      submitBtn.textContent = t.form.error || 'Error';
       submitBtn.style.backgroundColor = '#ef4444';
     }
 

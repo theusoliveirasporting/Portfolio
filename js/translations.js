@@ -1,4 +1,4 @@
-﻿// ===========================================
+// ===========================================
 // SISTEMA DE IDIOMA — CONFIGURAÇÃO E TRADUÇÕES
 // ===========================================
 
@@ -250,10 +250,13 @@ window.translations = {
       message: "Mensagem",
       submit: "Enviar Mensagem",
       whatsapp: "Falar no WhatsApp",
+      loading: "Enviando...",
+      success: "Mensagem Enviada! ✓",
+      error: "Erro ao enviar. Tente novamente."
     },
     footer: {
       copyright:
-        "&copy; 2025 Matheus Torres de Oliveira. Todos os direitos reservados.",
+        "&copy; 2026 Matheus Torres de Oliveira. Todos os direitos reservados.",
       developed:
         "JESUS É O CAMINHO, A VERDADE E A VIDA! NINGUÉM VAI AO PAI SENÃO POR ELE.",
     },
@@ -439,10 +442,13 @@ window.translations = {
       message: "Mensaje",
       submit: "Enviar Mensaje",
       whatsapp: "Hablar en WhatsApp",
+      loading: "Enviando...",
+      success: "¡Mensaje Enviado! ✓",
+      error: "Error al enviar. Tente novamente."
     },
     footer: {
       copyright:
-        "&copy; 2025 Matheus Torres de Oliveira. Todos los derechos reservados.",
+        "&copy; 2026 Matheus Torres de Oliveira. Todos los derechos reservados.",
       developed:
         "JÉSÚS ES EL CAMINO, LA VERDAD Y LA VIDA! NADIE VA AL PADRE SINO POR ÉL.",
     },
@@ -628,7 +634,7 @@ window.translations = {
       whatsapp: "Chat on WhatsApp",
     },
     footer: {
-      copyright: "&copy; 2025 Matheus Torres de Oliveira. All rights reserved.",
+      copyright: "&copy; 2026 Matheus Torres de Oliveira. All rights reserved.",
       developed:
         "JESUS IS THE WAY, THE TRUTH AND THE LIFE! NO ONE COMES TO THE FATHER EXCEPT THROUGH HIM.",
     },
@@ -806,7 +812,7 @@ window.translations = {
       whatsapp: "Chat on WhatsApp",
     },
     footer: {
-      copyright: "&copy; 2025 Matheus Torres de Oliveira. All rights reserved.",
+      copyright: "&copy; 2026 Matheus Torres de Oliveira. All rights reserved.",
       developed:
         "JESUS IS THE WAY, THE TRUTH AND THE LIFE! NO ONE COMES TO THE FATHER EXCEPT THROUGH HIM.",
     },
@@ -987,7 +993,7 @@ window.translations = {
     },
     footer: {
       copyright:
-        "&copy; 2025 Matheus Torres de Oliveira. Tous droits réservés.",
+        "&copy; 2026 Matheus Torres de Oliveira. Tous droits réservés.",
       developed:
         "JÉSUS EST LE CHEMIN, LA VÉRITÉ ET LA VIE! PERSONNE NE VA AU PÈRE SAUF PAR LUI.",
     },
@@ -1168,7 +1174,7 @@ window.translations = {
     },
     footer: {
       copyright:
-        "&copy; 2025 Matheus Torres de Oliveira. Tutti i diritti riservati.",
+        "&copy; 2026 Matheus Torres de Oliveira. Tutti i diritti riservati.",
       developed:
         "GESÙ È LA VIA, LA VERITÀ E LA VITA! NESSUNO VA AL PADRE SE NON PER MEZZO DI LUI.",
     },
@@ -1349,7 +1355,7 @@ window.translations = {
     },
     footer: {
       copyright:
-        "&copy; 2025 Matheus Torres de Oliveira. Alle Rechte vorbehalten.",
+        "&copy; 2026 Matheus Torres de Oliveira. Alle Rechte vorbehalten.",
       developed:
         "JESUS IST DER WEG, DIE WAHRHEIT UND DAS LEBEN! NIEMAND KOMMT ZUM VATER AUSSER DURCH IHN.",
     },
@@ -1529,7 +1535,7 @@ window.translations = {
     },
     footer: {
       copyright:
-        "&copy; 2025 Matheus Torres de Oliveira. Alle rechten voorbehouden.",
+        "&copy; 2026 Matheus Torres de Oliveira. Alle rechten voorbehouden.",
       developed:
         "JEZUS IS DE WEG, DE WAARHEID EN HET LEVEN! NIEMAND KOMT TOT DE VADER DAN DOOR HEM.",
     },
@@ -1698,7 +1704,7 @@ window.translations = {
     },
     footer: {
       copyright:
-        "&copy; 2025 Matheus Torres de Oliveira. Alle rechten voorbehouden.",
+        "&copy; 2026 Matheus Torres de Oliveira. Alle rechten voorbehouden.",
       developed: "JEZUS IS DE WEG, DE WAARHEID EN HET LEVEN!",
     },
     galeria: { title: "Fotogalerij" },
@@ -1869,7 +1875,7 @@ window.translations = {
       whatsapp: "Razgovaraj na WhatsApp",
     },
     footer: {
-      copyright: "&copy; 2025 Matheus Torres de Oliveira. Sva prava pridržana.",
+      copyright: "&copy; 2026 Matheus Torres de Oliveira. Sva prava pridržana.",
       developed:
         "ISUS JE PUT, ISTINA I ŽIVOT! NITKO NE DOLAZI OCEV OSIM PO MENI.",
     },
@@ -2046,7 +2052,7 @@ window.translations = {
     },
     footer: {
       copyright:
-        "&copy; 2025 Matheus Torres de Oliveira. Tüm hakları saklıdır.",
+        "&copy; 2026 Matheus Torres de Oliveira. Tüm hakları saklıdır.",
       developed:
         "İSA YOL, HAKİKAT VE HAYATTIR! BABA'YA ANCAK BENİM ARACILIĞIMLA GELİNİR.",
     },
@@ -2223,7 +2229,7 @@ window.translations = {
     },
     footer: {
       copyright:
-        "&copy; 2025 Matheus Torres de Oliveira. Wszelkie prawa zastrzeżone.",
+        "&copy; 2026 Matheus Torres de Oliveira. Wszelkie prawa zastrzeżone.",
       developed: "JEZUS JEST DROGĄ, PRAWDĄ I ŻYCIEM!",
     },
     galeria: { title: "Galeria Zdjęć" },
